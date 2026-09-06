@@ -127,6 +127,7 @@ function MedicalCodingRoute() {
         image={medHero.image}
         imageAlt={medHero.caption}
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Medical" }]}
+        mobileBackdrop
       >
         <ul className="mt-7 flex flex-wrap gap-2.5">
           {medHero.pills.map((p) => (

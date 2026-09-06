@@ -48,6 +48,7 @@ function ContactRoute() {
         image="/assets/images/contact-hero.jpg"
         imageAlt="A CORLINK IT client meeting"
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]}
+        mobileBackdrop
         aside={
           <div className="pointer-events-none absolute top-6 right-6 hidden text-right lg:block">
             {brand.tagline.map((word) => (

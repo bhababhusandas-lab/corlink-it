@@ -13,8 +13,9 @@ import { cn } from "@/lib/utils";
  *
  * `mobileBackdrop` switches the small-screen arrangement from "photograph
  * stacked under the copy" to "photograph behind the copy", the way the home
- * hero reads. It is opt-in per page because the veil below is calibrated
- * against the photograph's own darkness — see the note on the veil itself.
+ * hero reads. It is opt-in per page because the veil is calibrated against the
+ * photograph's own darkness: `backdropVeil="strong"` is for the dark, graphic
+ * images (the Work roadmap) that the default is too light to carry.
  */
 export function PageHero({
   eyebrow,
@@ -27,6 +28,7 @@ export function PageHero({
   aside,
   breadcrumbs,
   mobileBackdrop = false,
+  backdropVeil = "default",
 }: {
   eyebrow: string;
   title: string;
@@ -39,6 +41,7 @@ export function PageHero({
   aside?: ReactNode;
   breadcrumbs?: readonly Crumb[];
   mobileBackdrop?: boolean;
+  backdropVeil?: "default" | "strong";
 }) {
   return (
     <section className="hero-wash relative overflow-hidden">
@@ -54,7 +57,12 @@ export function PageHero({
       {image && mobileBackdrop ? (
         <div aria-hidden="true" className="absolute inset-0 lg:hidden">
           <img src={image} alt="" className="h-full w-full object-cover" />
-          <span className="absolute inset-0 bg-white/55" />
+          <span
+            className={cn(
+              "absolute inset-0",
+              backdropVeil === "strong" ? "bg-white/68" : "bg-white/55",
+            )}
+          />
           <span className="absolute inset-0 bg-gradient-to-r from-white/45 via-white/20 to-transparent" />
           <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)]/50 via-transparent to-white/55" />
         </div>

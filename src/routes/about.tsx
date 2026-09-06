@@ -51,6 +51,8 @@ function AboutPage() {
         image={aboutPage.hero.image}
         imageAlt="The CORLINK IT delivery team at work"
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Work" }]}
+        mobileBackdrop
+        backdropVeil="strong"
         aside={
           /* Delivery flow chips floated over the photograph, as in the reference */
           <div className="pointer-events-none absolute inset-y-0 right-4 hidden flex-col justify-center gap-2 lg:flex">
