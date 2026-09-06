@@ -36,27 +36,39 @@ function BadgeStat({ className }: { className?: string }) {
 export function Hero() {
   return (
     <section id="home" className="hero-wash relative overflow-hidden">
-      {/* Backdrop photograph — small screens only, faded well back so the
-          navy copy keeps its contrast against it. */}
+      {/*
+       * Backdrop photograph — small screens only.
+       *
+       * The veil is two layers rather than one flat wash. A flat wash heavy
+       * enough for the copy (82%) turned the photograph to haze; this keeps a
+       * light 55% base so the photograph reads, and adds a left-weighted scrim
+       * only where the copy actually sits. Measured against the text: every
+       * line clears WCAG AA at these values, and the right-hand half of the
+       * frame — the coder and her screen — stays at roughly the same density
+       * as the design reference.
+       */}
       <div aria-hidden="true" className="absolute inset-0 lg:hidden">
         <img src={hero.image} alt="" className="h-full w-full object-cover" />
-        <span className="absolute inset-0 bg-[color-mix(in_srgb,#ffffff_82%,transparent)]" />
-        <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)] via-transparent to-white/70" />
+        <span className="absolute inset-0 bg-white/55" />
+        <span className="absolute inset-0 bg-gradient-to-r from-white/45 via-white/20 to-transparent" />
+        <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)]/50 via-transparent to-white/55" />
       </div>
 
       <div className="grid-mesh-soft pointer-events-none absolute inset-0 opacity-60" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-8">
-        <Reveal className="pt-20 pb-14 sm:pt-28 lg:w-[54%] lg:py-24">
+        <Reveal className="pt-20 pb-14 [&_.eyebrow]:text-[var(--navy)] sm:pt-28 lg:w-[54%] lg:py-24 lg:[&_.eyebrow]:text-[var(--blue-strong)]">
           <p className="eyebrow">{hero.badge}</p>
 
           <h1 className="mt-4 font-display text-[clamp(2.25rem,4.6vw,3.6rem)] leading-[1.1] font-semibold tracking-[-0.015em] text-[var(--navy)]">
             {hero.headline}
             <br />
-            <span className="text-[var(--blue)]">{hero.headlineAccent}</span>
+            <span className="text-[var(--blue-strong)] lg:text-[var(--blue)]">
+              {hero.headlineAccent}
+            </span>
           </h1>
 
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--ink-muted)]">
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--navy)] lg:text-[var(--ink-muted)]">
             {hero.subheading}
           </p>
 

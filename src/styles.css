@@ -173,7 +173,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--blue-strong); /* Secondary Blue — the primary blue is only 4.6:1 on white, so it fell under AA at this size over any tint or photograph */
 }
 
 /* Serif display sizes, fluid between mobile and 1440. */
