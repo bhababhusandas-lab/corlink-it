@@ -1,0 +1,421 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * CORLINK IT — Classic premium healthcare design system.
+ *
+ * Medical blue + white, deep navy accents, elegant serif headings on clean
+ * sans body copy, thin blue icons, subtle borders and shadows, generous
+ * whitespace, moderate rounded corners.
+ *
+ * All colours are tokens. Never hardcode a colour in a component.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand surfaces */
+  --color-blue: var(--blue);
+  --color-blue-strong: var(--blue-strong);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-tint: var(--tint);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-onNavy: var(--on-navy);
+  --color-onNavy-muted: var(--on-navy-muted);
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+:root {
+  /* Moderate rounded corners — cards, buttons, image frames. */
+  --radius: 0.5rem;
+
+  /*
+   * Outer page width. The design is drawn at 1440; without a cap the
+   * full-bleed bands (hero photo, the three-panel about/why bands, the CTA
+   * strips) keep growing on ultra-wide screens while the contained sections
+   * stay at 1280 — so the photos stretch into the corners and the copy is
+   * stranded in the middle. Capping the shell keeps every band in proportion.
+   */
+  --shell: 1600px;
+
+  /* ---------- Brand palette (locked) ---------- */
+  --blue: #0877d1; /* Primary Blue */
+  --blue-strong: #1464a5; /* Secondary Blue */
+  --navy: #062b5c; /* Deep Navy */
+  --navy-deep: #041d3f; /* Navy, one step deeper — CTA bands */
+  --tint: #eef7ff; /* Light Blue */
+  --surface: #f6fafe; /* Alt background */
+  --ink: #102a43; /* Body text */
+
+  /* Derived neutrals — all sampled off the locked palette. */
+  --ink-muted: #4a6480;
+  --ink-soft: #5c738c; /* AA on white (4.90) and on --tint (4.52) */
+  --line: #dfeaf5;
+  --line-soft: #ecf3fa;
+  --on-navy: #ffffff;
+  --on-navy-muted: #b9d2ea;
+
+  /* ---------- Semantic (shadcn) ---------- */
+  --background: #ffffff;
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--tint);
+  --secondary-foreground: var(--navy);
+  --muted: var(--surface);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--tint);
+  --accent-foreground: var(--navy);
+  --destructive: #c0362c;
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--blue);
+
+  /* Subtle, never heavy — the reference uses shadow sparingly. */
+  --shadow-card: 0 1px 2px rgb(16 42 67 / 4%);
+  --shadow-card-hover: 0 12px 28px -12px rgb(8 119 209 / 22%);
+  --shadow-float: 0 18px 40px -18px rgb(6 43 92 / 26%);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /*
+   * Serif headings. Tight-ish tracking keeps the transitional serif from
+   * looking loose at display sizes; body copy keeps the sans default.
+   */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    letter-spacing: -0.011em;
+    font-weight: 600;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--blue) 18%, transparent);
+    color: var(--navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ---------- Type utilities ---------- */
+
+/*
+ * Section eyebrow — small blue uppercase label above every section heading.
+ * Sans, not mono: the reference sets these in the body face.
+ */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+/* Serif display sizes, fluid between mobile and 1440. */
+@utility h-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.4vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--navy);
+}
+
+@utility h-section {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--navy);
+}
+
+@utility h-card {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+@utility body-copy {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+
+/* ---------- Surfaces ---------- */
+
+@utility section-tint {
+  background: var(--surface);
+}
+
+@utility section-blue {
+  background: var(--tint);
+}
+
+/* Bright blue band — the closing CTA strip, as in the reference. */
+@utility surface-cta {
+  background: linear-gradient(100deg, var(--blue-strong) 0%, var(--blue) 60%, var(--blue) 100%);
+  color: var(--on-navy);
+}
+
+/* Deep navy band — used by the darker in-page bands. */
+@utility surface-navy {
+  background: linear-gradient(115deg, var(--navy) 0%, var(--navy-deep) 58%, var(--blue-strong) 160%);
+  color: var(--on-navy);
+}
+
+@utility on-navy-heading {
+  color: var(--on-navy);
+}
+
+/* Soft blue wash behind page heroes. */
+@utility hero-wash {
+  background:
+    radial-gradient(120% 90% at 82% 8%, color-mix(in srgb, var(--blue) 12%, transparent) 0%, transparent 60%),
+    linear-gradient(180deg, var(--tint) 0%, #ffffff 92%);
+}
+
+/* Faint blue grid, used at very low strength behind light sections. */
+@utility grid-mesh-soft {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--blue) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--blue) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Shown only where a real pointer exists — for hover-specific affordances. */
+@utility pointer-only {
+  display: none;
+
+  @media (hover: hover) and (pointer: fine) {
+    display: block;
+  }
+}
+
+@utility hair-line {
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---------- Cards ---------- */
+
+@utility card-base {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+/*
+ * Cards lift on hover: border warms to blue and the shadow deepens. Movement is
+ * kept to 2px — the reference is corporate, not springy.
+ */
+@utility card-lift {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--blue) 42%, var(--line));
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+}
+
+/* Rounded blue square behind a thin line icon. */
+@utility icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--tint);
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+/* Outlined circular icon, used by the numbered process rows. */
+@utility icon-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--blue) 32%, transparent);
+  background: #ffffff;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+/* ---------- Media ---------- */
+
+@utility media-frame {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--tint);
+}
+
+/* Bottom-up navy scrim so white labels stay legible over photography. */
+@utility media-scrim {
+  background: linear-gradient(
+    180deg,
+    transparent 28%,
+    color-mix(in srgb, var(--navy) 62%, transparent) 74%,
+    color-mix(in srgb, var(--navy-deep) 88%, transparent) 100%
+  );
+}
+
+/* ---------- Motion ---------- */
+
+/* Reveal-on-scroll primitive driven by IntersectionObserver. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-x 52s linear infinite;
+}
+
+/* Slim top progress bar shown while a route change settles. */
+@keyframes route-bar {
+  0% {
+    transform: scaleX(0);
+  }
+  55% {
+    transform: scaleX(0.72);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-route-bar {
+  transform-origin: 0 50%;
+  animation: route-bar 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/*
+ * The supplied logo.png is a navy mark on an opaque white background. logo-mark.png
+ * is that same artwork with the white ground keyed out, so on the white header and
+ * white footer of this design it renders in its own navy — no filter needed. The
+ * previous dark theme inverted it to white; that treatment is gone with the dark
+ * surfaces it existed for.
+ */
+
+/*
+ * Process rail: one row from lg up, one column per step, so the hairline
+ * connectors between the numbered circles line through horizontally.
+ */
+@media (width >= 64rem) {
+  ol[style*="--cols"] {
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  }
+}

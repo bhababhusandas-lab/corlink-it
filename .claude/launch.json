@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "corlink-cosmos",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "exec npx vite dev --port \"${PORT:-8082}\" --strictPort --host"
+      ],
+      "autoPort": true
+    }
+  ]
+}
