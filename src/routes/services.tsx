@@ -10,6 +10,7 @@ import { Container, Section } from "@/components/ui/section";
 import { IconTile } from "@/components/ui/icons";
 import { Reveal } from "@/components/Reveal";
 import { Glyph } from "@/components/ui/icons";
+import { cn } from "@/lib/utils";
 
 const title = "Services — CORLINK IT";
 const description =
@@ -31,6 +32,33 @@ export const Route = createFileRoute("/services")({
 const HERO_STAT = stats[2];
 
 /**
+ * The hero figure. Floats on the photograph from lg up; below that the
+ * photograph is a backdrop rather than a panel, so it sits in the copy flow.
+ */
+function HeroStat({ className }: { className?: string }) {
+  if (!HERO_STAT) return null;
+  return (
+    <div
+      className={cn(
+        "card-base flex items-center gap-3.5 px-5 py-4 shadow-[var(--shadow-float)]",
+        className,
+      )}
+    >
+      <Glyph label={HERO_STAT.label} size={26} className="text-[var(--blue)]" />
+      <span className="min-w-0">
+        <span className="font-display block text-[1.5rem] leading-none font-semibold text-[var(--navy)]">
+          {HERO_STAT.value}
+          {HERO_STAT.suffix}
+        </span>
+        <span className="mt-1 block text-[0.72rem] font-medium tracking-[0.08em] text-[var(--ink-muted)] uppercase">
+          {HERO_STAT.label}
+        </span>
+      </span>
+    </div>
+  );
+}
+
+/**
  * Services page — section order follows the reference exactly:
  *
  *   hero → category cards → selected-service detail → tab bar → overview
@@ -47,26 +75,10 @@ function ServicesPage() {
         image="/assets/images/corl-coding-office.webp"
         imageAlt="A medical coder working at a workstation in the CORLINK IT office"
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Services" }]}
-        aside={
-          <>
-            {HERO_STAT ? (
-              <div className="card-base absolute right-4 bottom-4 flex items-center gap-3.5 px-5 py-4 shadow-[var(--shadow-float)] lg:right-8 lg:bottom-8">
-                <Glyph label={HERO_STAT.label} size={26} className="text-[var(--blue)]" />
-                <span className="min-w-0">
-                  <span className="font-display block text-[1.5rem] leading-none font-semibold text-[var(--navy)]">
-                    {HERO_STAT.value}
-                    {HERO_STAT.suffix}
-                  </span>
-                  <span className="mt-1 block text-[0.72rem] font-medium tracking-[0.08em] text-[var(--ink-muted)] uppercase">
-                    {HERO_STAT.label}
-                  </span>
-                </span>
-              </div>
-            ) : null}
-          </>
-        }
+        mobileBackdrop
+        aside={<HeroStat className="absolute right-8 bottom-8" />}
       >
-        <ul className="mt-7 flex flex-wrap gap-x-8 gap-y-4">
+        <ul className="mt-7 grid grid-cols-1 gap-y-4 sm:flex sm:flex-wrap sm:gap-x-8">
           {servicesHero.points.map((p) => (
             <li key={p} className="flex items-center gap-2.5">
               <Glyph label={p} size={19} className="text-[var(--blue)]" />
@@ -76,6 +88,8 @@ function ServicesPage() {
             </li>
           ))}
         </ul>
+
+        <HeroStat className="mt-9 w-fit lg:hidden" />
       </PageHero>
 
       {/* Category cards → detail band → section tab bar */}
