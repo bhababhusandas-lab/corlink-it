@@ -9,6 +9,15 @@
         "exec npx vite dev --port \"${PORT:-8082}\" --strictPort --host"
       ],
       "autoPort": true
+    },
+    {
+      "name": "static-preview",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "exec python3 -m http.server \"${PORT:-4173}\" --directory .output/public"
+      ],
+      "autoPort": true
     }
   ]
 }
