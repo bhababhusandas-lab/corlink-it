@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { brand, footer } from "../content/site";
 
 function NotFoundComponent() {
   return (
@@ -77,14 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      /*
+       * Site-wide fallbacks. Each route overrides title/description/og, but
+       * author and the twitter card do not get overridden — they were still
+       * carrying the starter template's Lovable branding on every page.
+       */
+      { title: brand.footerName },
+      { name: "description", content: footer.tagline },
+      { name: "author", content: brand.footerName },
+      { property: "og:title", content: brand.footerName },
+      { property: "og:description", content: footer.tagline },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       // Source Serif 4 carries the headings, Inter the body copy. These were
@@ -100,7 +105,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      /*
+       * The Corlink mark. The .ico carries 16/32/48 for browser tabs, the PNG
+       * covers higher-density displays, and the Apple icon is a separate file
+       * because iOS ignores transparency and masks to a rounded square.
+       */
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", href: "/favicon-96.png", type: "image/png", sizes: "96x96" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
     ],
   }),
   shellComponent: RootShell,
