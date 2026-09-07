@@ -14,11 +14,11 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "rounded-[var(--radius)] bg-[var(--blue)] px-6 py-3 text-white shadow-[var(--shadow-card)] hover:bg-[var(--blue-strong)]",
+    "rounded-[var(--radius)] bg-[var(--blue-fill)] px-6 py-3 text-[var(--on-blue-fill)] shadow-[var(--shadow-card)] hover:bg-[var(--blue-fill-hover)]",
   secondary:
-    "rounded-[var(--radius)] border border-[color-mix(in_srgb,var(--blue)_40%,transparent)] bg-white px-6 py-3 text-[var(--blue-ink)] hover:border-[var(--blue)] hover:bg-[var(--tint)]",
+    "rounded-[var(--radius)] border border-[color-mix(in_srgb,var(--blue)_40%,transparent)] bg-[var(--card-bg)] px-6 py-3 text-[var(--blue-ink)] hover:border-[var(--blue)] hover:bg-[var(--tint)]",
   onNavy:
-    "rounded-[var(--radius)] bg-white px-6 py-3 text-[var(--blue-strong)] hover:bg-[var(--tint)]",
+    "rounded-[var(--radius)] bg-[var(--card-bg)] px-6 py-3 text-[var(--blue-strong)] hover:bg-[var(--tint)]",
   link: "text-[var(--blue-ink)] hover:text-[var(--blue-ink-hover)]",
 };
 

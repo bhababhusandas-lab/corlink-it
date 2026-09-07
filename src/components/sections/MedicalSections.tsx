@@ -74,7 +74,7 @@ export function MedWhy() {
           <ul className="space-y-4">
             {advantages.map((a) => (
               <li key={a} className="flex gap-3.5">
-                <span className="icon-tile h-9 w-9 shrink-0 bg-white">
+                <span className="icon-tile h-9 w-9 shrink-0 bg-[var(--card-bg)]">
                   <CheckCircle2 size={17} strokeWidth={1.5} aria-hidden="true" />
                 </span>
                 <span className="pt-1.5 text-[0.85rem] leading-snug font-medium text-[var(--navy)]">

@@ -45,7 +45,7 @@ export function CurrentOpportunities() {
                 id="dept-filter"
                 value={dept}
                 onChange={(e) => setDept(e.target.value)}
-                className="w-full rounded-[var(--radius)] border border-[var(--line)] bg-white px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)] sm:w-auto"
+                className="w-full rounded-[var(--radius)] border border-[var(--line)] bg-[var(--card-bg)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)] sm:w-auto"
               >
                 {departments.map((d) => (
                   <option key={d} value={d}>

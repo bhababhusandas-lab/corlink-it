@@ -133,7 +133,7 @@ function MedicalCodingRoute() {
           {medHero.pills.map((p) => (
             <li
               key={p}
-              className="flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--blue)_28%,transparent)] bg-white px-3.5 py-1.5"
+              className="flex items-center gap-2 rounded-full border border-[color-mix(in_srgb,var(--blue)_28%,transparent)] bg-[var(--card-bg)] px-3.5 py-1.5"
             >
               <Glyph label={p} size={15} className="text-[var(--blue)]" />
               <span className="text-[0.78rem] font-medium text-[var(--navy)]">{p}</span>
@@ -176,8 +176,8 @@ function MedicalCodingRoute() {
                       className={cn(
                         "relative z-10 flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-200",
                         isActive
-                          ? "border-[var(--blue)] bg-[var(--blue)] text-white shadow-[var(--shadow-card-hover)]"
-                          : "border-[color-mix(in_srgb,var(--blue)_32%,transparent)] bg-white text-[var(--blue-ink)] group-hover:border-[var(--blue)]",
+                          ? "border-[var(--blue-fill)] bg-[var(--blue-fill)] text-white shadow-[var(--shadow-card-hover)]"
+                          : "border-[color-mix(in_srgb,var(--blue)_32%,transparent)] bg-[var(--card-bg)] text-[var(--blue-ink)] group-hover:border-[var(--blue)]",
                       )}
                     >
                       <Glyph label={s.t} size={22} />
@@ -250,7 +250,7 @@ function MedicalCodingRoute() {
                 className={cn(
                   "rounded-full border px-5 py-2.5 text-[0.8rem] font-semibold transition-colors",
                   certTab === k
-                    ? "border-white bg-white text-[var(--blue-strong)]"
+                    ? "border-white bg-white text-[var(--navy-surface)]"
                     : "border-[color-mix(in_srgb,var(--on-navy)_34%,transparent)] text-[var(--on-navy-muted)] hover:border-white hover:text-white",
                 )}
               >
@@ -536,7 +536,7 @@ function MedicalCodingRoute() {
                 id="salary-profile"
                 value={role}
                 onChange={(e) => setRole(Number(e.target.value))}
-                className="mt-3 w-full rounded-[var(--radius)] border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)]"
+                className="mt-3 w-full rounded-[var(--radius)] border border-[var(--line)] bg-[var(--card-bg)] px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)]"
               >
                 {salaryBands.map((b, i) => (
                   <option key={b.label} value={i}>
@@ -674,7 +674,7 @@ function MedicalCodingRoute() {
               {beginnerMistakes.map((m) => (
                 <li
                   key={m}
-                  className="rounded-full border border-[color-mix(in_srgb,var(--blue)_24%,transparent)] bg-white px-3.5 py-2 text-[0.82rem] text-[var(--navy)]"
+                  className="rounded-full border border-[color-mix(in_srgb,var(--blue)_24%,transparent)] bg-[var(--card-bg)] px-3.5 py-2 text-[0.82rem] text-[var(--navy)]"
                 >
                   {m}
                 </li>
@@ -713,7 +713,7 @@ function MedicalCodingRoute() {
                       className={cn(
                         "flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-mono text-[0.72rem] font-semibold transition-colors",
                         open
-                          ? "bg-[var(--blue)] text-white"
+                          ? "bg-[var(--blue-fill)] text-white"
                           : "bg-[var(--tint)] text-[var(--blue-ink)]",
                       )}
                     >
@@ -798,7 +798,7 @@ function MedicalCodingRoute() {
                       className={cn(
                         "min-w-[4.25rem] rounded-full border px-5 py-2 text-[0.8rem] font-semibold transition-colors",
                         answers[i] === v
-                          ? "border-[var(--blue)] bg-[var(--blue)] text-white"
+                          ? "border-[var(--blue-fill)] bg-[var(--blue-fill)] text-white"
                           : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--blue)] hover:text-[var(--blue-ink)]",
                       )}
                     >

@@ -61,7 +61,7 @@ export function MedicalTeaser({ tone = "white" }: { tone?: "white" | "tint" }) {
                 {liveCodes.items.map((c) => (
                   <li
                     key={c.code}
-                    className="rounded-[calc(var(--radius)-2px)] border border-[color-mix(in_srgb,var(--blue)_18%,transparent)] bg-white px-4 py-3"
+                    className="rounded-[calc(var(--radius)-2px)] border border-[color-mix(in_srgb,var(--blue)_18%,transparent)] bg-[var(--card-bg)] px-4 py-3"
                   >
                     <span className="block text-[0.65rem] font-semibold tracking-[0.16em] text-[var(--ink-soft)] uppercase">
                       {c.system}

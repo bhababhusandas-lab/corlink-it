@@ -58,7 +58,7 @@ export function ServiceCatalogue() {
                     className={cn(
                       "group flex h-full w-full flex-col rounded-[var(--radius)] border p-4 text-left transition-all duration-200",
                       isActive
-                        ? "border-[var(--blue)] bg-[var(--blue)] shadow-[var(--shadow-card-hover)]"
+                        ? "border-[var(--blue-fill)] bg-[var(--blue-fill)] shadow-[var(--shadow-card-hover)]"
                         : "card-base card-lift",
                     )}
                   >
@@ -140,7 +140,7 @@ export function ServiceCatalogue() {
       {/* Section tab bar — a tab whose section is not rendered would scroll nowhere. */}
       <nav
         aria-label="Sections on this page"
-        className="sticky top-[72px] z-30 border-b border-[var(--line)] bg-white/95 backdrop-blur-sm lg:top-20"
+        className="sticky top-[72px] z-30 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper)_95%,transparent)] backdrop-blur-sm lg:top-20"
       >
         <Container>
           <ul className="-mb-px flex gap-1 overflow-x-auto">
@@ -195,7 +195,7 @@ export function ServiceOverview() {
             <ul className="space-y-5">
               {serviceOverview.capabilities.map((c) => (
                 <li key={c.title} className="flex gap-4">
-                  <IconTile label={c.title} className="h-10 w-10 bg-white" size={20} />
+                  <IconTile label={c.title} className="h-10 w-10 bg-[var(--card-bg)]" size={20} />
                   <div className="min-w-0 pt-0.5">
                     <span className="block text-[0.92rem] font-semibold text-[var(--navy)]">
                       {c.title}

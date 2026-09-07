@@ -5,7 +5,7 @@ import { RouteTransition } from "./RouteTransition";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[var(--shell)] flex-col bg-white">
+    <div className="mx-auto flex min-h-screen w-full max-w-[var(--shell)] flex-col bg-[var(--paper)]">
       <RouteTransition />
       <a
         href="#main"

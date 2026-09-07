@@ -49,9 +49,10 @@ export function Hero() {
        */}
       <div aria-hidden="true" className="absolute inset-0 lg:hidden">
         <img src={hero.image} alt="" className="h-full w-full object-cover" />
-        <span className="absolute inset-0 bg-white/55" />
-        <span className="absolute inset-0 bg-gradient-to-r from-white/45 via-white/20 to-transparent" />
-        <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)]/50 via-transparent to-white/55" />
+        {/* One element, three layers — see the hero-veil utility. It inverts
+            under the dark theme, where washing towards white would leave light
+            copy on a bright photograph. */}
+        <span className="hero-veil absolute inset-0" />
       </div>
 
       {/*

@@ -44,7 +44,7 @@ export function StatsBand({ tone = "white" }: { tone?: "white" | "tint" }) {
   return (
     <section
       aria-label="Company statistics"
-      className={cn("py-12 lg:py-16", tone === "tint" ? "section-tint" : "bg-white")}
+      className={cn("py-12 lg:py-16", tone === "tint" ? "section-tint" : "bg-[var(--paper)]")}
     >
       <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-8">
         <div className="section-blue rounded-[calc(var(--radius)+2px)] px-4 py-10 sm:px-8 lg:py-12">

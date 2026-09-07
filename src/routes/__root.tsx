@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { brand, footer } from "../content/site";
+import { THEME_INIT_SCRIPT } from "../lib/themes";
 
 function NotFoundComponent() {
   return (
@@ -126,6 +127,13 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/*
+         * Sets data-theme before the first paint. It has to be inline and ahead
+         * of the bundle: run any later and a dark-theme visitor gets a white
+         * flash on every navigation. If it throws, the attribute stays unset and
+         * the prefers-color-scheme rule in styles.css takes over.
+         */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body>
         {children}

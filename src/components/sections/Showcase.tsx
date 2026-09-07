@@ -228,7 +228,10 @@ export function TrustStrip() {
   if (!trustStrip.partners.length) return null;
 
   return (
-    <section aria-label={trustStrip.label} className="border-y border-[var(--line)] bg-white py-7">
+    <section
+      aria-label={trustStrip.label}
+      className="border-y border-[var(--line)] bg-[var(--paper)] py-7"
+    >
       <Container>
         <p className="text-[0.65rem] font-semibold tracking-[0.14em] text-[var(--ink-soft)] uppercase">
           {trustStrip.label}

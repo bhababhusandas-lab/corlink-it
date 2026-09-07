@@ -125,7 +125,7 @@ function ServicesPage() {
               >
                 <div className="flex items-center justify-between">
                   <IconTile label={v.title} />
-                  <span className="font-display text-2xl font-semibold text-[color-mix(in_srgb,var(--blue)_30%,transparent)]">
+                  <span className="font-display text-2xl font-semibold text-[var(--ink-soft)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>

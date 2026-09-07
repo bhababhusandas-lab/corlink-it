@@ -1,65 +1,102 @@
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { DEFAULT_THEME, THEME_STORAGE_KEY, isThemeId, themes, type ThemeId } from "@/lib/themes";
+import {
+  DEFAULT_THEME,
+  THEME_STORAGE_KEY,
+  isThemeChoice,
+  resolveTheme,
+  type ThemeChoice,
+} from "@/lib/themes";
 
-function apply(theme: ThemeId) {
-  // Always write the attribute rather than removing it for the default theme:
-  // toggling html[data-theme] on and off at runtime leaves descendant styles
-  // stale in some engines, so the :not([data-theme]) rule in styles.css is only
-  // ever the no-JS fallback and never flips while the page is live.
-  document.documentElement.setAttribute("data-theme", theme);
+function readChoice(): ThemeChoice {
   try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (isThemeChoice(stored)) return stored;
   } catch {
-    // Private browsing or storage disabled — the theme still applies for this visit.
+    // Private browsing or storage disabled — fall through to the default.
+  }
+  return DEFAULT_THEME;
+}
+
+function apply(choice: ThemeChoice) {
+  // The attribute always carries a resolved theme, never "system": CSS reads it
+  // directly, and leaving it unset would hand control back to the media query
+  // mid-session.
+  document.documentElement.setAttribute("data-theme", resolveTheme(choice));
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, choice);
+  } catch {
+    // The theme still applies for this visit, it just will not be remembered.
   }
 }
 
 /**
- * Theme control, one swatch per entry in `themes`. `active` starts null on both
- * the server and the first client render so hydration matches, then a mount
- * effect fills it in from the attribute on <html>.
+ * Light/dark toggle.
+ *
+ * `choice` starts null on the server and on the first client render so the
+ * markup matches and hydration does not warn; a mount effect then fills it in.
+ * Until then the button renders its icon slot empty rather than guessing, which
+ * would flash the wrong icon.
+ *
+ * Clicking moves between light and dark explicitly. Someone who has never
+ * chosen follows their system setting, and lands on the opposite of whatever
+ * they are currently seeing.
  */
 export function ThemeSwitch({ className }: { className?: string }) {
-  const [active, setActive] = useState<ThemeId | null>(null);
+  const [choice, setChoice] = useState<ThemeChoice | null>(null);
 
   useEffect(() => {
-    const read = () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      setActive(isThemeId(current) ? current : DEFAULT_THEME);
+    setChoice(readChoice());
+
+    // Someone on "system" should follow the OS if it changes mid-visit.
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const onSystemChange = () => {
+      if (readChoice() === "system") {
+        document.documentElement.setAttribute("data-theme", resolveTheme("system"));
+      }
     };
-    read();
-    // The attribute on <html> is the single source of truth — CSS reads it too.
-    // Observing it keeps every instance of this control (navbar and mobile menu)
-    // in agreement instead of each holding its own copy of the selection.
-    const observer = new MutationObserver(read);
+    mq.addEventListener("change", onSystemChange);
+
+    // Keep every instance of this control (navbar and mobile menu) in agreement
+    // by reading the attribute rather than each holding its own copy.
+    const observer = new MutationObserver(() => setChoice(readChoice()));
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
-    return () => observer.disconnect();
+
+    return () => {
+      mq.removeEventListener("change", onSystemChange);
+      observer.disconnect();
+    };
   }, []);
 
+  const resolved = choice === null ? null : resolveTheme(choice);
+  const next = resolved === "dark" ? "light" : "dark";
+
   return (
-    <div
-      role="group"
-      aria-label="Colour theme"
+    <button
+      type="button"
+      onClick={() => {
+        const target: ThemeChoice = resolved === "dark" ? "light" : "dark";
+        apply(target);
+        setChoice(target);
+      }}
+      aria-label={resolved === null ? "Switch colour theme" : `Switch to ${next} theme`}
+      title={resolved === null ? "Switch colour theme" : `Switch to ${next} theme`}
       className={cn(
-        "flex items-center gap-1.5 rounded-full border border-[var(--line)] px-2 py-1.5",
+        "flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)]",
+        "border border-[var(--line)] text-[var(--navy)] transition-colors",
+        "hover:border-[color-mix(in_srgb,var(--blue)_45%,transparent)] hover:text-[var(--blue-ink)]",
         className,
       )}
     >
-      {themes.map((t) => (
-        <button
-          key={t.id}
-          type="button"
-          data-theme-option={t.id}
-          aria-label={t.label}
-          aria-pressed={active === t.id}
-          onClick={() => apply(t.id)}
-          className={cn("theme-dot", active === t.id && "theme-dot-active")}
-        />
-      ))}
-    </div>
+      {resolved === "dark" ? (
+        <Sun size={19} strokeWidth={1.5} aria-hidden="true" />
+      ) : resolved === "light" ? (
+        <Moon size={19} strokeWidth={1.5} aria-hidden="true" />
+      ) : null}
+    </button>
   );
 }

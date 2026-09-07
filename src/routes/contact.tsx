@@ -28,7 +28,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const fieldClass =
-  "mt-2 w-full rounded-[var(--radius)] border border-[var(--line)] bg-white px-3.5 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)]";
+  "mt-2 w-full rounded-[var(--radius)] border border-[var(--line)] bg-[var(--card-bg)] px-3.5 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--blue)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_18%,transparent)]";
 
 /**
  * Contact page — section order follows the reference exactly:

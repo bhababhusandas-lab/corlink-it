@@ -11,7 +11,7 @@ import { Reveal } from "@/components/Reveal";
  */
 export function AboutSplit() {
   return (
-    <section id="about" className="relative bg-white">
+    <section id="about" className="relative bg-[var(--paper)]">
       <div className="grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.25fr)_minmax(0,0.8fr)]">
         {/* Photograph — bleeds to the left edge on desktop */}
         <Reveal className="relative min-h-[220px] overflow-hidden lg:min-h-[380px]">
@@ -51,7 +51,7 @@ export function AboutSplit() {
           <ul className="space-y-5">
             {homeAbout.points.map((p) => (
               <li key={p} className="flex gap-3.5">
-                <span className="icon-tile h-9 w-9 shrink-0 bg-white">
+                <span className="icon-tile h-9 w-9 shrink-0 bg-[var(--card-bg)]">
                   <Glyph label={p} size={17} />
                 </span>
                 <span className="pt-1.5 text-[0.85rem] leading-snug font-medium text-[var(--navy)]">

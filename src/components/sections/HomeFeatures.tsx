@@ -33,7 +33,7 @@ export function HomeFeatures() {
               <div className="relative flex flex-1 flex-col p-5">
                 <IconTile
                   label={f.title}
-                  className="absolute -top-[1.375rem] left-5 border border-white bg-white shadow-[var(--shadow-card-hover)]"
+                  className="absolute -top-[1.375rem] left-5 border border-[var(--card-bg)] bg-[var(--card-bg)] shadow-[var(--shadow-card-hover)]"
                 />
                 <h3 className="h-card mt-6">{f.title}</h3>
                 <p className="body-copy mt-2.5 text-[0.875rem]">{f.body}</p>

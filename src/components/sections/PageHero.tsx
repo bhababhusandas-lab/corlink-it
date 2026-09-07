@@ -60,11 +60,9 @@ export function PageHero({
           <span
             className={cn(
               "absolute inset-0",
-              backdropVeil === "strong" ? "bg-white/68" : "bg-white/55",
+              backdropVeil === "strong" ? "hero-veil-strong" : "hero-veil",
             )}
           />
-          <span className="absolute inset-0 bg-gradient-to-r from-white/45 via-white/20 to-transparent" />
-          <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)]/50 via-transparent to-white/55" />
         </div>
       ) : null}
 

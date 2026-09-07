@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { brand, navCta, navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
+import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
 import { CtaLink } from "@/components/ui/cta";
 
 export function Navbar() {
@@ -20,13 +21,13 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper)_95%,transparent)] backdrop-blur-sm">
       <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between gap-6 px-5 sm:px-6 lg:h-20 lg:px-8">
         <Link to="/" className="flex min-w-0 items-center" aria-label={`${brand.name} home`}>
           <img
             src={brand.logo}
             alt={`${brand.name} logo`}
-            className="h-9 w-auto shrink-0 lg:h-11"
+            className="brand-mark h-9 w-auto shrink-0 lg:h-11"
           />
         </Link>
 
@@ -57,6 +58,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeSwitch className="hidden lg:flex" />
+
           <CtaLink to={navCta.path} label={navCta.label} className="hidden sm:inline-flex" />
 
           <button
@@ -89,7 +92,7 @@ export function Navbar() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="absolute inset-x-0 top-full max-h-[calc(100vh-72px)] overflow-y-auto border-b border-[var(--line)] bg-white shadow-[var(--shadow-float)] lg:hidden"
+        className="absolute inset-x-0 top-full max-h-[calc(100vh-72px)] overflow-y-auto border-b border-[var(--line)] bg-[var(--paper)] shadow-[var(--shadow-float)] lg:hidden"
       >
         <nav aria-label="Mobile" className="flex flex-col px-5 py-4 sm:px-6">
           {navLinks.map((l) => {
@@ -109,7 +112,10 @@ export function Navbar() {
               </Link>
             );
           })}
-          <CtaLink to={navCta.path} label={navCta.label} className="mt-5 mb-2 w-full" />
+          <div className="mt-5 mb-2 flex items-center gap-3">
+            <CtaLink to={navCta.path} label={navCta.label} className="flex-1 justify-center" />
+            <ThemeSwitch />
+          </div>
         </nav>
       </div>
     </header>

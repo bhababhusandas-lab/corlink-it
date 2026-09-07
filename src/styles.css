@@ -97,6 +97,51 @@
   --on-navy: #ffffff;
   --on-navy-muted: #b9d2ea;
 
+  /*
+   * Page and card surfaces. Separated from bare #ffffff so the dark theme has
+   * something to redefine — cards stay one step lighter than the page in both
+   * themes, which is what gives them their lift.
+   */
+  --paper: #ffffff;
+  --card-bg: #ffffff;
+
+  /*
+   * The navy bands stay dark in both themes, so they cannot ride on --navy,
+   * which flips to near-white for headings under the dark theme.
+   */
+  --navy-surface: #062b5c;
+  --navy-surface-deep: #041d3f;
+
+  /*
+   * Filled controls: the solid button and the closing CTA band, both of which
+   * carry white text. They cannot ride on --blue, which lightens under the dark
+   * theme to stay legible *as text* — white on that is 2.54:1. These stay deep
+   * enough for white in both themes.
+   */
+  --blue-fill: #0877d1;
+  --blue-fill-hover: #1464a5;
+  --on-blue-fill: #ffffff;
+
+  /*
+   * The hero veil, laid over the backdrop photograph. Light theme washes the
+   * picture towards white; dark theme sinks it towards the page instead, or
+   * the copy would be light text on a bright photograph.
+   */
+  --veil-flat: rgb(255 255 255 / 55%);
+  --veil-flat-strong: rgb(255 255 255 / 68%);
+  --veil-scrim: linear-gradient(
+    to right,
+    rgb(255 255 255 / 45%),
+    rgb(255 255 255 / 20%) 50%,
+    transparent
+  );
+  --veil-fade: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--tint) 50%, transparent),
+    transparent 50%,
+    rgb(255 255 255 / 55%)
+  );
+
   /* ---------- Semantic (shadcn) ---------- */
   --background: #ffffff;
   --foreground: var(--ink);
@@ -122,6 +167,113 @@
   --shadow-card: 0 1px 2px rgb(16 42 67 / 4%);
   --shadow-card-hover: 0 12px 28px -12px rgb(8 119 209 / 22%);
   --shadow-float: 0 18px 40px -18px rgb(6 43 92 / 26%);
+}
+
+/*
+ * ---------- Dark theme ----------
+ *
+ * The tokens below are the only thing that changes; every component reads them,
+ * so nothing needs a dark: variant of its own.
+ *
+ * --navy carries heading text and flips to near-white here. The navy *bands*
+ * ride on --navy-surface instead, which does not flip — a dark band is dark in
+ * both themes. Measured on these surfaces the worst small-text pairing is
+ * --ink-soft on --tint at 5.53:1.
+ */
+/*
+ * Declared unlayered, like the :root block above it. Cascade layers lose to
+ * unlayered rules, so wrapping these in @layer base left them overridden by
+ * the light tokens and the attribute flipped with nothing to show for it.
+ */
+:root[data-theme="dark"] {
+  --blue: #52a8f5;
+  --blue-strong: #4f9ee8; /* #3d90dc measured 4.30:1 on --tint, under AA */
+  --blue-fill: #0f6cbd; /* white on this is 5.38:1 */
+  --blue-fill-hover: #1580d8;
+  --blue-ink: #7cc2ff;
+  --blue-ink-hover: #a8d6ff;
+
+  /* Heading text, not a surface. */
+  --navy: #eaf2fb;
+
+  --tint: #122a47;
+  --surface: #0e1e33;
+  --ink: #e7eef7;
+  --ink-muted: #a7bcd6;
+  --ink-soft: #8ba2be;
+  --line: #22385a;
+  --line-soft: #1a2c48;
+
+  --paper: #0a1626;
+  --card-bg: #10203a;
+  --background: #0a1626;
+
+  /* Sink the hero photograph towards the page instead of towards white. */
+  --veil-flat: rgb(10 22 38 / 62%);
+  --veil-flat-strong: rgb(10 22 38 / 74%);
+  --veil-scrim: linear-gradient(
+    to right,
+    rgb(10 22 38 / 55%),
+    rgb(10 22 38 / 25%) 50%,
+    transparent
+  );
+  --veil-fade: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--tint) 55%, transparent),
+    transparent 50%,
+    rgb(10 22 38 / 62%)
+  );
+
+  /* Shadows read as depth on white and as nothing on navy — deepen them. */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 35%);
+  --shadow-card-hover: 0 12px 28px -12px rgb(0 0 0 / 55%);
+  --shadow-float: 0 18px 40px -18px rgb(0 0 0 / 65%);
+
+  color-scheme: dark;
+}
+
+/*
+ * Before the theme script runs, and for anyone who never picks a theme,
+ * follow the system setting. Guarded so an explicit "light" choice still wins.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --blue: #52a8f5;
+    --blue-strong: #4f9ee8; /* #3d90dc measured 4.30:1 on --tint, under AA */
+    --blue-fill: #0f6cbd; /* white on this is 5.38:1 */
+    --blue-fill-hover: #1580d8;
+    --blue-ink: #7cc2ff;
+    --blue-ink-hover: #a8d6ff;
+    --navy: #eaf2fb;
+    --tint: #122a47;
+    --surface: #0e1e33;
+    --ink: #e7eef7;
+    --ink-muted: #a7bcd6;
+    --ink-soft: #8ba2be;
+    --line: #22385a;
+    --line-soft: #1a2c48;
+    --paper: #0a1626;
+    --card-bg: #10203a;
+    --background: #0a1626;
+    --veil-flat: rgb(10 22 38 / 62%);
+    --veil-flat-strong: rgb(10 22 38 / 74%);
+    --veil-scrim: linear-gradient(
+      to right,
+      rgb(10 22 38 / 55%),
+      rgb(10 22 38 / 25%) 50%,
+      transparent
+    );
+    --veil-fade: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--tint) 55%, transparent),
+      transparent 50%,
+      rgb(10 22 38 / 62%)
+    );
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 35%);
+    --shadow-card-hover: 0 12px 28px -12px rgb(0 0 0 / 55%);
+    --shadow-float: 0 18px 40px -18px rgb(0 0 0 / 65%);
+    color-scheme: dark;
+  }
 }
 
 @layer base {
@@ -181,7 +333,9 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--blue-ink); /* Primary Blue is 4.6:1 on white and 4.24:1 on --tint — under AA at this size */
+  color: var(
+    --blue-ink
+  ); /* Primary Blue is 4.6:1 on white and 4.24:1 on --tint — under AA at this size */
 }
 
 /* Serif display sizes, fluid between mobile and 1440. */
@@ -229,13 +383,23 @@
 
 /* Bright blue band — the closing CTA strip, as in the reference. */
 @utility surface-cta {
-  background: linear-gradient(100deg, var(--blue-strong) 0%, var(--blue) 60%, var(--blue) 100%);
+  background: linear-gradient(
+    100deg,
+    var(--blue-fill-hover) 0%,
+    var(--blue-fill) 60%,
+    var(--blue-fill) 100%
+  );
   color: var(--on-navy);
 }
 
 /* Deep navy band — used by the darker in-page bands. */
 @utility surface-navy {
-  background: linear-gradient(115deg, var(--navy) 0%, var(--navy-deep) 58%, var(--blue-strong) 160%);
+  background: linear-gradient(
+    115deg,
+    var(--navy-surface) 0%,
+    var(--navy-surface-deep) 58%,
+    var(--blue-strong) 160%
+  );
   color: var(--on-navy);
 }
 
@@ -246,8 +410,21 @@
 /* Soft blue wash behind page heroes. */
 @utility hero-wash {
   background:
-    radial-gradient(120% 90% at 82% 8%, color-mix(in srgb, var(--blue) 12%, transparent) 0%, transparent 60%),
-    linear-gradient(180deg, var(--tint) 0%, #ffffff 92%);
+    radial-gradient(
+      120% 90% at 82% 8%,
+      color-mix(in srgb, var(--blue) 12%, transparent) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--tint) 0%, var(--paper) 92%);
+}
+
+/* The three veil layers over a hero backdrop photograph, as one background. */
+@utility hero-veil {
+  background: var(--veil-fade), var(--veil-scrim), var(--veil-flat);
+}
+
+@utility hero-veil-strong {
+  background: var(--veil-fade), var(--veil-scrim), var(--veil-flat-strong);
 }
 
 /* Faint blue grid, used at very low strength behind light sections. */
@@ -275,7 +452,7 @@
 /* ---------- Cards ---------- */
 
 @utility card-base {
-  background: #ffffff;
+  background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
@@ -320,7 +497,7 @@
   width: 3.5rem;
   border-radius: 9999px;
   border: 1px solid color-mix(in srgb, var(--blue) 32%, transparent);
-  background: #ffffff;
+  background: var(--card-bg);
   color: var(--blue);
   flex-shrink: 0;
 }
@@ -338,8 +515,8 @@
   background: linear-gradient(
     180deg,
     transparent 28%,
-    color-mix(in srgb, var(--navy) 62%, transparent) 74%,
-    color-mix(in srgb, var(--navy-deep) 88%, transparent) 100%
+    color-mix(in srgb, var(--navy-surface) 62%, transparent) 74%,
+    color-mix(in srgb, var(--navy-surface-deep) 88%, transparent) 100%
   );
 }
 
@@ -412,11 +589,23 @@
 
 /*
  * The supplied logo.png is a navy mark on an opaque white background. logo-mark.png
- * is that same artwork with the white ground keyed out, so on the white header and
- * white footer of this design it renders in its own navy — no filter needed. The
- * previous dark theme inverted it to white; that treatment is gone with the dark
- * surfaces it existed for.
+ * is that same artwork with the white ground keyed out, so on the light header and
+ * footer it renders in its own navy — no filter needed.
+ *
+ * On the dark theme that navy mark all but disappears against the header, so it
+ * is lifted to near-white. invert() alone would turn the navy a pale orange;
+ * dropping saturation first keeps it neutral, and the brightness trim stops it
+ * glaring against the surrounding text.
  */
+:root[data-theme="dark"] .brand-mark {
+  filter: grayscale(1) invert(1) brightness(1.9);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand-mark {
+    filter: grayscale(1) invert(1) brightness(1.9);
+  }
+}
 
 /*
  * Process rail: one row from lg up, one column per step, so the hairline

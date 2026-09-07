@@ -133,7 +133,7 @@ function AboutPage() {
             {aboutPage.expertise.map((e) => (
               <li
                 key={e}
-                className="flex items-center gap-2.5 rounded-full border border-[var(--line)] bg-white px-5 py-2.5 transition-colors hover:border-[color-mix(in_srgb,var(--blue)_45%,transparent)] hover:bg-[var(--tint)]"
+                className="flex items-center gap-2.5 rounded-full border border-[var(--line)] bg-[var(--card-bg)] px-5 py-2.5 transition-colors hover:border-[color-mix(in_srgb,var(--blue)_45%,transparent)] hover:bg-[var(--tint)]"
               >
                 <Glyph label={e} size={17} className="text-[var(--blue)]" />
                 <span className="text-[0.85rem] font-medium text-[var(--navy)]">{e}</span>
@@ -161,7 +161,7 @@ function AboutPage() {
               >
                 <div className="flex items-center justify-between">
                   <IconTile label={d.title} />
-                  <span className="font-display text-2xl font-semibold text-[color-mix(in_srgb,var(--blue)_30%,transparent)]">
+                  <span className="font-display text-2xl font-semibold text-[var(--ink-soft)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
