@@ -7,6 +7,23 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  /*
+   * Pin the nitro preset.
+   *
+   * The wrapper only sets `cloudflare-module` as nitro's *default* preset, and
+   * a default loses to auto-detection. On Cloudflare Pages' builder CF_PAGES is
+   * set, so nitro picked `cloudflare-pages` instead and emitted the server to
+   * dist/_worker.js rather than .output/server. Prerendering then could not
+   * find the server entry, fell back to SSR against a server that was not
+   * there, and every Git-triggered build failed with "Failed to fetch /:
+   * Internal Server Error" — while local builds, where nothing triggers the
+   * auto-detection, worked fine.
+   *
+   * Naming the preset explicitly makes the two environments agree, and matches
+   * the project's configured build output directory of .output/public.
+   */
+  nitro: { preset: "cloudflare-module" },
+
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
