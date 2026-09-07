@@ -55,29 +55,32 @@ function AboutPage() {
         backdropVeil="strong"
         aside={
           /*
-           * Delivery flow, floated over the photograph as in the reference: the
-           * label sits to the left of the stack, and the chips cascade down and
-           * to the right in one continuous staircase. The offset used to cycle
-           * every third chip, which read as a stack that had slipped out of
-           * alignment rather than as a flow.
+           * Delivery flow, laid along the foot of the photograph.
+           *
+           * At the chips' natural size six of them need ~600px and the panel is
+           * 46% of the viewport, so a single line only fits from about 1400px
+           * up. They are a little more compact here, and allowed to wrap, so it
+           * reads as one line on a normal desktop and folds to two rather than
+           * overflowing on a narrow one.
            */
-          <div className="pointer-events-none absolute inset-y-0 right-6 hidden items-center gap-4 lg:flex">
-            <span className="block max-w-[6.5rem] text-right text-[0.78rem] leading-snug font-semibold text-white [text-shadow:0_1px_8px_rgb(4_18_45_/_85%)]">
+          <div className="pointer-events-none absolute inset-x-5 bottom-5 hidden flex-col items-center gap-2.5 lg:flex">
+            <span className="block text-center text-[0.78rem] leading-snug font-semibold text-white [text-shadow:0_1px_8px_rgb(4_18_45_/_85%)]">
               {workHero.flowLabel}
-              <span aria-hidden="true" className="mt-2 ml-auto block h-px w-7 bg-white/70" />
             </span>
 
-            {/* items-start keeps each chip at its own width, so the margin
-                below shifts it right instead of narrowing it. */}
-            <ul className="flex flex-col items-start gap-2">
-              {workHero.flow.map((step, i) => (
+            {/* One line from xl, where the panel is wide enough for all six.
+                Below that a 3x2 grid, which reads as deliberate — free wrapping
+                left five on one line and "Support" stranded on its own. */}
+            <ul className="grid grid-cols-3 justify-items-center gap-2 xl:flex xl:items-center xl:justify-center">
+              {workHero.flow.map((step) => (
                 <li
                   key={step}
-                  style={{ marginLeft: `${i * 0.7}rem` }}
-                  className="card-base flex items-center gap-2 px-3 py-1.5 shadow-[var(--shadow-float)]"
+                  className="card-base flex items-center gap-1.5 px-2.5 py-1.5 shadow-[var(--shadow-float)]"
                 >
-                  <Glyph label={step} size={14} className="text-[var(--blue)]" />
-                  <span className="text-[0.72rem] font-semibold text-[var(--navy)]">{step}</span>
+                  <Glyph label={step} size={13} className="shrink-0 text-[var(--blue)]" />
+                  <span className="text-[0.68rem] font-semibold whitespace-nowrap text-[var(--navy)]">
+                    {step}
+                  </span>
                 </li>
               ))}
             </ul>
