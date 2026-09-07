@@ -20,7 +20,7 @@ export function Container({ children, className }: { children: ReactNode; classN
 type Tone = "white" | "tint" | "blue" | "navy";
 
 const toneClass: Record<Tone, string> = {
-  white: "bg-[var(--paper)]",
+  white: "bg-white",
   tint: "section-tint",
   blue: "section-blue",
   navy: "surface-navy",

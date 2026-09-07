@@ -11,7 +11,7 @@ export function TechRail() {
   return (
     <section
       aria-label="Our services"
-      className="relative overflow-hidden border-y border-[var(--line)] bg-[var(--paper)] py-6"
+      className="relative overflow-hidden border-y border-[var(--line)] bg-white py-6"
     >
       <div className="relative flex overflow-hidden">
         <ul className="animate-marquee flex shrink-0 items-center gap-12 pr-12">
@@ -29,11 +29,11 @@ export function TechRail() {
       {/* Fade the band into the page edges instead of cutting the labels off. */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[var(--paper)] to-transparent"
+        className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--paper)] to-transparent"
+        className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent"
       />
     </section>
   );

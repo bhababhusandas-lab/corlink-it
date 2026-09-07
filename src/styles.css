@@ -72,44 +72,33 @@
    */
   --shell: 1600px;
 
-  /*
-   * ---------- Brand palette ----------
-   *
-   * Sampled from the approved home-page design (image/home.png): the button
-   * and CTA fills read as medians of their solid areas, the text colours as
-   * the mode of each glyph's inked core. Values are the measurements, rounded
-   * only where JPEG noise made the last digit meaningless.
-   */
-  --blue: #0064b4; /* Primary Blue — buttons, icons, accents */
-  --blue-strong: #0054a0; /* Deeper blue — the closing CTA band, hovers */
-  --navy: #00185a; /* Deep Navy — headings */
-  --navy-deep: #00123d; /* Navy, one step deeper — CTA bands */
-  --tint: #eef5fb; /* Light Blue — the stats and about bands */
-  --surface: #f4f8fc; /* Alt background — the industries band */
-  --paper: #fcfdfe; /* Page white. The design never uses pure #ffffff for a
-                       full-width background; cards keep #ffffff so they still
-                       lift off it. */
+  /* ---------- Brand palette (locked) ---------- */
+  --blue: #0877d1; /* Primary Blue */
+  --blue-strong: #1464a5; /* Secondary Blue */
+  --navy: #062b5c; /* Deep Navy */
+  --navy-deep: #041d3f; /* Navy, one step deeper — CTA bands */
+  --tint: #eef7ff; /* Light Blue */
+  --surface: #f6fafe; /* Alt background */
   --ink: #102a43; /* Body text */
 
-  /* Derived neutrals. */
-  --ink-muted: #4e668a; /* the reference's body copy */
-  --ink-soft: #5c738c; /* AA on white (4.90) and on --tint (4.55) */
+  /* Derived neutrals — all sampled off the locked palette. */
+  --ink-muted: #4a6480;
+  --ink-soft: #5c738c; /* AA on white (4.90) and on --tint (4.52) */
   /*
-   * Blue for text. The old Primary Blue was 4.24:1 on --tint and failed AA at
-   * small sizes, so text blue had to be a darker second colour. The design's
-   * blue is darker to begin with — 6.03 on white, 5.43 on --tint, 5.65 on
-   * --surface — so text and fills can share it again. The tokens are kept as
-   * the seam where that could diverge once more.
+   * Blue for text below the large-text threshold. Primary Blue is only 4.60:1
+   * on white and 4.24:1 on --tint, so it fails AA wherever it sets small type.
+   * Secondary Blue clears it on every surface we use (6.18 / 5.71 / 5.90).
+   * Icons, button fills and large display accents stay on --blue.
    */
-  --blue-ink: #0064b4;
-  --blue-ink-hover: #0054a0; /* A step down, so blue links still react on hover */
-  --line: #e7f0f6; /* the hairline between the service cards */
-  --line-soft: #f0f5fa;
+  --blue-ink: #1464a5;
+  --blue-ink-hover: #0f4d80; /* One step down again, so blue links still react on hover */
+  --line: #dfeaf5;
+  --line-soft: #ecf3fa;
   --on-navy: #ffffff;
   --on-navy-muted: #b9d2ea;
 
   /* ---------- Semantic (shadcn) ---------- */
-  --background: var(--paper);
+  --background: #ffffff;
   --foreground: var(--ink);
   --card: #ffffff;
   --card-foreground: var(--ink);
