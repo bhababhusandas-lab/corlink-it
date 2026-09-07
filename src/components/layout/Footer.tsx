@@ -150,7 +150,21 @@ export function Footer() {
             ))}
           </nav>
 
-          <span className="text-[0.8rem] text-[var(--ink-soft)]">{footer.copyright}</span>
+          <div className="flex flex-col gap-1 text-[0.8rem] text-[var(--ink-soft)] sm:flex-row sm:items-center sm:gap-4">
+            <span>{footer.copyright}</span>
+            <span aria-hidden="true" className="hidden h-3 w-px bg-[var(--line)] sm:block" />
+            <span>
+              {footer.credit.prefix}{" "}
+              <a
+                href={footer.credit.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--blue-ink)] transition-colors hover:text-[var(--blue-ink-hover)]"
+              >
+                {footer.credit.label}
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

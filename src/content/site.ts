@@ -211,6 +211,12 @@ export const footer = {
     gst: "GST: 36AAMCC9546N1ZT",
   },
   copyright: "© 2026 Corlink IT. All rights reserved.",
+  /** Build credit shown beside the copyright. */
+  credit: {
+    prefix: "Made by",
+    label: "Ayaan Innovations",
+    url: "https://ayaaninnovations.com/",
+  },
 };
 
 /* ------------------------------- SERVICES ------------------------------- */
