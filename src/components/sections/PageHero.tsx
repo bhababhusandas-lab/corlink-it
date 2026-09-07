@@ -68,7 +68,13 @@ export function PageHero({
         </div>
       ) : null}
 
-      <div className="grid-mesh-soft pointer-events-none absolute inset-0 opacity-50" />
+      <div
+        className={cn(
+          "grid-mesh-soft pointer-events-none absolute inset-0 opacity-50",
+          // Over a photograph the grid reads as a screen door, not texture.
+          mobileBackdrop && "hidden lg:block",
+        )}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-8">
         <Reveal

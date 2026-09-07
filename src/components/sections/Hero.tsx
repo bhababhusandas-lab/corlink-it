@@ -54,10 +54,16 @@ export function Hero() {
         <span className="absolute inset-0 bg-gradient-to-b from-[var(--tint)]/50 via-transparent to-white/55" />
       </div>
 
-      <div className="grid-mesh-soft pointer-events-none absolute inset-0 opacity-60" />
+      {/*
+       * The mesh sits over the wash on desktop, where it reads as texture.
+       * Below lg the photograph is behind the copy, and a grid of lines drawn
+       * across a photograph reads as a screen door — it was the main reason
+       * the phone hero looked soft.
+       */}
+      <div className="grid-mesh-soft pointer-events-none absolute inset-0 hidden opacity-60 lg:block" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-6 lg:px-8">
-        <Reveal className="pt-20 pb-14 [&_.eyebrow]:text-[var(--navy)] sm:pt-28 lg:w-[54%] lg:py-24 lg:[&_.eyebrow]:text-[var(--blue-strong)]">
+        <Reveal className="pt-14 pb-10 [&_.eyebrow]:text-[var(--navy)] sm:pt-24 sm:pb-14 lg:w-[54%] lg:py-24 lg:[&_.eyebrow]:text-[var(--blue-strong)]">
           <p className="eyebrow">{hero.badge}</p>
 
           <h1 className="mt-4 font-display text-[clamp(2.25rem,4.6vw,3.6rem)] leading-[1.1] font-semibold tracking-[-0.015em] text-[var(--navy)]">
