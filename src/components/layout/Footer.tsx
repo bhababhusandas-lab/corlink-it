@@ -15,7 +15,7 @@ export function Footer() {
   const socialProfiles = footer.social.filter((s) => s.url);
 
   return (
-    <footer className="border-t border-[var(--line)] bg-white">
+    <footer className="border-t border-[var(--line)] bg-[var(--paper)]">
       <div className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_0.9fr_1.3fr_0.8fr] lg:gap-10">
           <div className="min-w-0">

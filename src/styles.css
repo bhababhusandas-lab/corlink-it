@@ -84,8 +84,11 @@
   --blue-strong: #0054a0; /* Deeper blue — the closing CTA band, hovers */
   --navy: #00185a; /* Deep Navy — headings */
   --navy-deep: #00123d; /* Navy, one step deeper — CTA bands */
-  --tint: #ecf4fc; /* Light Blue — the stats and about bands */
+  --tint: #eef5fb; /* Light Blue — the stats and about bands */
   --surface: #f4f8fc; /* Alt background — the industries band */
+  --paper: #fcfdfe; /* Page white. The design never uses pure #ffffff for a
+                       full-width background; cards keep #ffffff so they still
+                       lift off it. */
   --ink: #102a43; /* Body text */
 
   /* Derived neutrals. */
@@ -106,7 +109,7 @@
   --on-navy-muted: #b9d2ea;
 
   /* ---------- Semantic (shadcn) ---------- */
-  --background: #ffffff;
+  --background: var(--paper);
   --foreground: var(--ink);
   --card: #ffffff;
   --card-foreground: var(--ink);
