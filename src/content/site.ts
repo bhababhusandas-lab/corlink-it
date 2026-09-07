@@ -981,6 +981,10 @@ export const contactHero = {
 };
 
 export const contactExtras = {
+  /** Shown after the form hands the enquiry to the visitor's mail client. */
+  mailFallback: {
+    before: "If your email app did not open, send your message to",
+  },
   formEyebrow: "GET IN TOUCH",
   /** Consent control above the submit button. */
   consent: {

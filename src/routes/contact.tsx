@@ -90,7 +90,27 @@ function ContactRoute() {
                 <form
                   className="mt-7"
                   onSubmit={(e) => {
+                    /*
+                     * There is no backend to post to, so the enquiry is handed
+                     * to the visitor's own mail client, pre-addressed and
+                     * pre-filled. Previously this only flipped `sent` and
+                     * discarded everything the visitor had typed while telling
+                     * them it had been received.
+                     */
                     e.preventDefault();
+                    const data = new FormData(e.currentTarget);
+                    const value = (n: string) => String(data.get(n) ?? "").trim();
+
+                    const body = contactPage.form.fields
+                      .map((f) => `${f.label}: ${value(f.name)}`)
+                      .join("\n\n");
+
+                    const subject = `${contactPage.form.title} — ${value("name")}`;
+                    window.location.href =
+                      `mailto:${footer.contact.email}` +
+                      `?subject=${encodeURIComponent(subject)}` +
+                      `&body=${encodeURIComponent(body)}`;
+
                     setSent(true);
                   }}
                 >
@@ -164,12 +184,30 @@ function ContactRoute() {
                     className="mt-6 w-full sm:w-auto"
                   />
 
-                  <p
-                    aria-live="polite"
-                    className="mt-4 min-h-5 text-sm font-medium text-[var(--blue-strong)]"
-                  >
-                    {sent ? contactPage.form.success : ""}
-                  </p>
+                  <div aria-live="polite" className="mt-4 min-h-5">
+                    {sent ? (
+                      <>
+                        <p className="text-sm font-medium text-[var(--blue-ink)]">
+                          {contactPage.form.success}
+                        </p>
+                        {/*
+                         * The handoff is silent when no mail client is set up,
+                         * so the address is repeated as a link rather than
+                         * leaving the visitor to assume it sent.
+                         */}
+                        <p className="mt-1 text-[0.8rem] text-[var(--ink-muted)]">
+                          {contactExtras.mailFallback.before}{" "}
+                          <a
+                            href={`mailto:${footer.contact.email}`}
+                            className="font-medium text-[var(--blue-ink)] underline underline-offset-2 transition-colors hover:text-[var(--blue-ink-hover)]"
+                          >
+                            {footer.contact.email}
+                          </a>
+                          .
+                        </p>
+                      </>
+                    ) : null}
+                  </div>
                 </form>
               </div>
             </Reveal>
