@@ -43,7 +43,7 @@ export function LegalPage({ page }: { page: LegalPageContent }) {
                   <div className="flex gap-4">
                     <span
                       aria-hidden="true"
-                      className="mt-1 shrink-0 font-mono text-[0.78rem] font-semibold text-[var(--blue)]"
+                      className="mt-1 shrink-0 font-mono text-[0.78rem] font-semibold text-[var(--blue-ink)]"
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>

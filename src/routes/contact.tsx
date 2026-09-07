@@ -106,7 +106,7 @@ function ContactRoute() {
                         >
                           {f.label}
                           {f.required ? (
-                            <span className="text-[var(--blue)]" aria-hidden="true">
+                            <span className="text-[var(--blue-ink)]" aria-hidden="true">
                               {" "}
                               *
                             </span>
@@ -150,7 +150,7 @@ function ContactRoute() {
                       {contactExtras.consent.before}{" "}
                       <Link
                         to="/privacy-policy"
-                        className="font-medium text-[var(--blue)] underline underline-offset-2"
+                        className="font-medium text-[var(--blue-ink)] underline underline-offset-2"
                       >
                         {contactExtras.consent.linkLabel}
                       </Link>{" "}
@@ -185,7 +185,7 @@ function ContactRoute() {
                   <li key={it.label} className="card-base card-lift flex gap-4 p-5">
                     <IconTile label={it.label} className="rounded-full" />
                     <div className="min-w-0">
-                      <span className="block text-[0.72rem] font-semibold tracking-[0.12em] text-[var(--blue)] uppercase">
+                      <span className="block text-[0.72rem] font-semibold tracking-[0.12em] text-[var(--blue-ink)] uppercase">
                         {it.label}
                       </span>
                       <span className="mt-1.5 block text-[0.9rem] leading-relaxed whitespace-pre-line text-[var(--navy)]">
@@ -198,7 +198,7 @@ function ContactRoute() {
                 <li className="card-base flex gap-4 p-5">
                   <IconTile label="Legal Compliance" className="rounded-full" />
                   <div className="min-w-0">
-                    <span className="block text-[0.72rem] font-semibold tracking-[0.12em] text-[var(--blue)] uppercase">
+                    <span className="block text-[0.72rem] font-semibold tracking-[0.12em] text-[var(--blue-ink)] uppercase">
                       GST
                     </span>
                     <span className="mt-1.5 block text-[0.9rem] text-[var(--navy)]">

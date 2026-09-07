@@ -41,7 +41,7 @@ export function OpportunityRows({ jobs }: { jobs: readonly Job[] }) {
             <span className="flex min-w-0 flex-1 flex-col p-5">
               <span className="flex items-center gap-2">
                 <Glyph label={job.dept} size={15} className="text-[var(--blue)]" />
-                <span className="text-[0.7rem] font-semibold tracking-[0.12em] text-[var(--blue)] uppercase">
+                <span className="text-[0.7rem] font-semibold tracking-[0.12em] text-[var(--blue-ink)] uppercase">
                   {job.dept}
                 </span>
               </span>
@@ -64,7 +64,7 @@ export function OpportunityRows({ jobs }: { jobs: readonly Job[] }) {
                 </span>
               </span>
 
-              <span className="mt-auto flex items-center gap-2 pt-5 text-sm font-semibold text-[var(--blue)]">
+              <span className="mt-auto flex items-center gap-2 pt-5 text-sm font-semibold text-[var(--blue-ink)]">
                 {job.cta}
                 <ArrowGlyph className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </span>

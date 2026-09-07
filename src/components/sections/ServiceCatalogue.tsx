@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { servicesPage, serviceDetail, serviceTabs, serviceOverview } from "@/content/site";
+import {
+  servicesPage,
+  serviceDetail,
+  serviceTabs,
+  serviceOverview,
+  caseStudy,
+} from "@/content/site";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
 import { CtaLink } from "@/components/ui/cta";
 import { ArrowGlyph } from "@/components/ui/eyebrow";
@@ -20,6 +26,10 @@ export function ServiceCatalogue() {
   const [active, setActive] = useState(0);
   const selected = servicesPage.items[active] ?? servicesPage.items[0];
   if (!selected) return null;
+
+  // The case study is hidden while it is still an outline, so drop its tab
+  // rather than leave a link that scrolls nowhere.
+  const tabs = serviceTabs.filter((t) => !(t.id === "case-study" && caseStudy.draft));
 
   return (
     <>
@@ -72,7 +82,7 @@ export function ServiceCatalogue() {
                         "mt-auto flex h-7 w-7 items-center justify-center self-end rounded-full border transition-colors",
                         isActive
                           ? "border-white/50 text-white"
-                          : "border-[color-mix(in_srgb,var(--blue)_35%,transparent)] text-[var(--blue)]",
+                          : "border-[color-mix(in_srgb,var(--blue)_35%,transparent)] text-[var(--blue-ink)]",
                       )}
                     >
                       <ArrowGlyph className="h-3.5 w-3.5" />
@@ -127,21 +137,21 @@ export function ServiceCatalogue() {
         </div>
       </section>
 
-      {/* Section tab bar */}
+      {/* Section tab bar — a tab whose section is not rendered would scroll nowhere. */}
       <nav
         aria-label="Sections on this page"
         className="sticky top-[72px] z-30 border-b border-[var(--line)] bg-white/95 backdrop-blur-sm lg:top-20"
       >
         <Container>
           <ul className="-mb-px flex gap-1 overflow-x-auto">
-            {serviceTabs.map((t, i) => (
+            {tabs.map((t, i) => (
               <li key={t.id} className="shrink-0">
                 <a
                   href={`#${t.id}`}
                   className={cn(
                     "block border-b-2 px-4 py-3.5 text-[0.85rem] font-semibold whitespace-nowrap transition-colors",
                     i === 0
-                      ? "border-[var(--blue)] text-[var(--blue)]"
+                      ? "border-[var(--blue)] text-[var(--blue-ink)]"
                       : "border-transparent text-[var(--ink-muted)] hover:text-[var(--navy)]",
                   )}
                 >

@@ -56,7 +56,7 @@ function Index() {
         tone="white"
       />
       <TestimonialBlock />
-      <InsightCards />
+      <InsightCards tone="tint" />
       <FinalCta />
     </SiteLayout>
   );

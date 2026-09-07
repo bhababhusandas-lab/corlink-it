@@ -57,7 +57,7 @@ export function Footer() {
                   <li key={l.label}>
                     <Link
                       to={l.path}
-                      className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue)]"
+                      className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue-ink)]"
                     >
                       {l.label}
                     </Link>
@@ -75,7 +75,7 @@ export function Footer() {
               <li className="flex gap-3">
                 <Glyph label="Electronic" className="mt-0.5 shrink-0 text-[var(--blue)]" />
                 <a
-                  className="min-w-0 transition-colors hover:text-[var(--blue)]"
+                  className="min-w-0 transition-colors hover:text-[var(--blue-ink)]"
                   href={`mailto:${footer.contact.email}`}
                 >
                   {footer.contact.email}
@@ -84,7 +84,7 @@ export function Footer() {
               <li className="flex gap-3">
                 <Glyph label="Voice" className="mt-0.5 shrink-0 text-[var(--blue)]" />
                 <a
-                  className="min-w-0 transition-colors hover:text-[var(--blue)]"
+                  className="min-w-0 transition-colors hover:text-[var(--blue-ink)]"
                   href={`tel:${footer.contact.phone.replace(/\s/g, "")}`}
                 >
                   {footer.contact.phone}
@@ -97,7 +97,7 @@ export function Footer() {
               <li className="flex gap-3">
                 <Glyph label="Web Development" className="mt-0.5 shrink-0 text-[var(--blue)]" />
                 <a
-                  className="min-w-0 transition-colors hover:text-[var(--blue)]"
+                  className="min-w-0 transition-colors hover:text-[var(--blue-ink)]"
                   href={`https://${footer.contact.website}`}
                 >
                   {footer.contact.website}
@@ -118,7 +118,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/privacy-policy"
-                  className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue)]"
+                  className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue-ink)]"
                 >
                   Privacy Policy
                 </Link>
@@ -126,7 +126,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/terms-and-conditions"
-                  className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue)]"
+                  className="text-sm text-[var(--ink-muted)] transition-colors hover:text-[var(--blue-ink)]"
                 >
                   Terms &amp; Conditions
                 </Link>
@@ -143,7 +143,7 @@ export function Footer() {
               <Link
                 key={l.path}
                 to={l.path}
-                className="text-[0.8rem] text-[var(--ink-muted)] transition-colors hover:text-[var(--blue)]"
+                className="text-[0.8rem] text-[var(--ink-muted)] transition-colors hover:text-[var(--blue-ink)]"
               >
                 {l.name}
               </Link>

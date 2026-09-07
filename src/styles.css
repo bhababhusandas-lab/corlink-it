@@ -84,6 +84,14 @@
   /* Derived neutrals — all sampled off the locked palette. */
   --ink-muted: #4a6480;
   --ink-soft: #5c738c; /* AA on white (4.90) and on --tint (4.52) */
+  /*
+   * Blue for text below the large-text threshold. Primary Blue is only 4.60:1
+   * on white and 4.24:1 on --tint, so it fails AA wherever it sets small type.
+   * Secondary Blue clears it on every surface we use (6.18 / 5.71 / 5.90).
+   * Icons, button fills and large display accents stay on --blue.
+   */
+  --blue-ink: #1464a5;
+  --blue-ink-hover: #0f4d80; /* One step down again, so blue links still react on hover */
   --line: #dfeaf5;
   --line-soft: #ecf3fa;
   --on-navy: #ffffff;
@@ -173,7 +181,7 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--blue-strong); /* Secondary Blue — the primary blue is only 4.6:1 on white, so it fell under AA at this size over any tint or photograph */
+  color: var(--blue-ink); /* Primary Blue is 4.6:1 on white and 4.24:1 on --tint — under AA at this size */
 }
 
 /* Serif display sizes, fluid between mobile and 1440. */

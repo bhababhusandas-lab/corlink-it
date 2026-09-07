@@ -109,7 +109,7 @@ export function MedSpecialties() {
               className="card-base card-lift flex min-w-0 flex-col items-center p-6 text-center"
             >
               <IconTile label={s.title} />
-              <span className="mt-4 block text-[0.68rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase">
+              <span className="mt-4 block text-[0.68rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase">
                 {s.badge}
               </span>
               <h3 className="h-card mt-1.5 text-[1.05rem]">{s.title}</h3>

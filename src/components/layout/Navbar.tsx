@@ -39,7 +39,9 @@ export function Navbar() {
                 to={l.path}
                 className={cn(
                   "relative px-3.5 py-2 text-[0.9rem] font-medium transition-colors",
-                  active ? "text-[var(--blue)]" : "text-[var(--ink)] hover:text-[var(--blue)]",
+                  active
+                    ? "text-[var(--blue-ink)]"
+                    : "text-[var(--ink)] hover:text-[var(--blue-ink)]",
                 )}
               >
                 {l.name}
@@ -98,7 +100,9 @@ export function Navbar() {
                 to={l.path}
                 className={cn(
                   "border-b border-[var(--line-soft)] py-3.5 text-base font-medium transition-colors last:border-b-0",
-                  active ? "text-[var(--blue)]" : "text-[var(--ink)] hover:text-[var(--blue)]",
+                  active
+                    ? "text-[var(--blue-ink)]"
+                    : "text-[var(--ink)] hover:text-[var(--blue-ink)]",
                 )}
               >
                 {l.name}

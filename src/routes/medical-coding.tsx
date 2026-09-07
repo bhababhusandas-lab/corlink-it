@@ -84,7 +84,7 @@ function Heading({
 function IndexRow({ index, children }: { index: number; children: React.ReactNode }) {
   return (
     <span className="flex items-baseline gap-4">
-      <span className="shrink-0 font-mono text-[0.72rem] font-semibold text-[var(--blue)]">
+      <span className="shrink-0 font-mono text-[0.72rem] font-semibold text-[var(--blue-ink)]">
         {String(index + 1).padStart(2, "0")}
       </span>
       <span className="min-w-0 text-[0.9rem] leading-relaxed text-[var(--ink)]">{children}</span>
@@ -177,7 +177,7 @@ function MedicalCodingRoute() {
                         "relative z-10 flex h-14 w-14 items-center justify-center rounded-full border transition-all duration-200",
                         isActive
                           ? "border-[var(--blue)] bg-[var(--blue)] text-white shadow-[var(--shadow-card-hover)]"
-                          : "border-[color-mix(in_srgb,var(--blue)_32%,transparent)] bg-white text-[var(--blue)] group-hover:border-[var(--blue)]",
+                          : "border-[color-mix(in_srgb,var(--blue)_32%,transparent)] bg-white text-[var(--blue-ink)] group-hover:border-[var(--blue)]",
                       )}
                     >
                       <Glyph label={s.t} size={22} />
@@ -186,7 +186,7 @@ function MedicalCodingRoute() {
                     <span
                       className={cn(
                         "mt-4 font-mono text-[0.72rem] font-semibold transition-colors",
-                        isActive ? "text-[var(--blue)]" : "text-[var(--ink-soft)]",
+                        isActive ? "text-[var(--blue-ink)]" : "text-[var(--ink-soft)]",
                       )}
                     >
                       {s.n}
@@ -201,7 +201,7 @@ function MedicalCodingRoute() {
           </ol>
 
           <Reveal className="card-base mt-10 p-6 lg:p-8">
-            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-[var(--blue)] uppercase">
+            <p className="text-[0.72rem] font-semibold tracking-[0.16em] text-[var(--blue-ink)] uppercase">
               STEP {activeStep.n}
             </p>
             <h3 className="font-display mt-3 text-[1.5rem] font-semibold text-[var(--navy)]">
@@ -303,7 +303,7 @@ function MedicalCodingRoute() {
         </div>
       </section>
 
-      <KeyBenefits tone="tint" />
+      <KeyBenefits tone="white" />
 
       <CaseStudyBlock tone="white" />
 
@@ -329,7 +329,7 @@ function MedicalCodingRoute() {
                 className={cn(
                   "-mb-px border-b-2 px-4 py-3 text-[0.85rem] font-semibold transition-colors",
                   codeTab === k
-                    ? "border-[var(--blue)] text-[var(--blue)]"
+                    ? "border-[var(--blue)] text-[var(--blue-ink)]"
                     : "border-transparent text-[var(--ink-muted)] hover:text-[var(--navy)]",
                 )}
               >
@@ -358,7 +358,7 @@ function MedicalCodingRoute() {
                     key={code}
                     className="card-base flex flex-col gap-1.5 p-4 sm:flex-row sm:items-center sm:gap-5"
                   >
-                    <span className="w-24 shrink-0 font-mono text-[0.85rem] font-semibold text-[var(--blue)]">
+                    <span className="w-24 shrink-0 font-mono text-[0.85rem] font-semibold text-[var(--blue-ink)]">
                       {code}
                     </span>
                     <span className="text-[0.875rem] text-[var(--ink-muted)]">{desc}</span>
@@ -374,7 +374,7 @@ function MedicalCodingRoute() {
                     key={k + label}
                     className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-4 border-b border-[var(--line)] pb-3"
                   >
-                    <span className="flex h-8 w-10 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] bg-[var(--tint)] font-mono text-[0.8rem] font-semibold text-[var(--blue)]">
+                    <span className="flex h-8 w-10 shrink-0 items-center justify-center rounded-[calc(var(--radius)-2px)] bg-[var(--tint)] font-mono text-[0.8rem] font-semibold text-[var(--blue-ink)]">
                       {k}
                     </span>
                     <span className="min-w-0">
@@ -441,7 +441,7 @@ function MedicalCodingRoute() {
               </h3>
 
               <p className="mt-4">
-                <span className="block text-[0.7rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase">
+                <span className="block text-[0.7rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase">
                   Minimum
                 </span>
                 <span className="mt-1 block text-[0.875rem] text-[var(--ink-muted)]">
@@ -449,7 +449,7 @@ function MedicalCodingRoute() {
                 </span>
               </p>
               <p className="mt-4">
-                <span className="block text-[0.7rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase">
+                <span className="block text-[0.7rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase">
                   Preferred
                 </span>
                 <span className="mt-1 block text-[0.875rem] text-[var(--ink-muted)]">
@@ -490,7 +490,7 @@ function MedicalCodingRoute() {
                 ))}
               </ul>
 
-              <p className="mt-5 inline-flex rounded-full bg-[var(--tint)] px-3.5 py-1.5 text-[0.75rem] font-semibold text-[var(--blue)]">
+              <p className="mt-5 inline-flex rounded-full bg-[var(--tint)] px-3.5 py-1.5 text-[0.75rem] font-semibold text-[var(--blue-ink)]">
                 {requirements.duration}
               </p>
             </Reveal>
@@ -528,7 +528,7 @@ function MedicalCodingRoute() {
             <div className="card-base min-w-0 p-6 lg:p-7">
               <label
                 htmlFor="salary-profile"
-                className="block text-[0.72rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase"
+                className="block text-[0.72rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase"
               >
                 Your profile
               </label>
@@ -557,7 +557,9 @@ function MedicalCodingRoute() {
                   <div className="flex items-baseline justify-between gap-4 text-[0.9rem]">
                     <span
                       className={cn(
-                        i === role ? "font-semibold text-[var(--blue)]" : "text-[var(--ink-muted)]",
+                        i === role
+                          ? "font-semibold text-[var(--blue-ink)]"
+                          : "text-[var(--ink-muted)]",
                       )}
                     >
                       {b.label}
@@ -593,7 +595,7 @@ function MedicalCodingRoute() {
                 delay={(i % 5) * 60}
                 className="card-base card-lift flex min-w-0 flex-col p-6"
               >
-                <span className="inline-flex self-start rounded-full bg-[var(--tint)] px-3 py-1 text-[0.7rem] font-semibold tracking-[0.1em] text-[var(--blue)] uppercase">
+                <span className="inline-flex self-start rounded-full bg-[var(--tint)] px-3 py-1 text-[0.7rem] font-semibold tracking-[0.1em] text-[var(--blue-ink)] uppercase">
                   {c.yr}
                 </span>
                 <h3 className="h-card mt-4">{c.role}</h3>
@@ -620,7 +622,7 @@ function MedicalCodingRoute() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <Reveal className="card-base min-w-0 p-6 lg:p-7">
-              <h3 className="font-display flex items-center gap-3 text-[1.25rem] font-semibold text-[var(--blue)]">
+              <h3 className="font-display flex items-center gap-3 text-[1.25rem] font-semibold text-[var(--blue-ink)]">
                 <IconTile label="Proven Track Record of Success" />
                 Advantages
               </h3>
@@ -712,7 +714,7 @@ function MedicalCodingRoute() {
                         "flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-mono text-[0.72rem] font-semibold transition-colors",
                         open
                           ? "bg-[var(--blue)] text-white"
-                          : "bg-[var(--tint)] text-[var(--blue)]",
+                          : "bg-[var(--tint)] text-[var(--blue-ink)]",
                       )}
                     >
                       {r.num}
@@ -727,7 +729,7 @@ function MedicalCodingRoute() {
                       </span>
                     </span>
 
-                    <span className="hidden shrink-0 rounded-full bg-[var(--tint)] px-3 py-1.5 text-[0.72rem] font-semibold text-[var(--blue)] sm:inline-block">
+                    <span className="hidden shrink-0 rounded-full bg-[var(--tint)] px-3 py-1.5 text-[0.72rem] font-semibold text-[var(--blue-ink)] sm:inline-block">
                       {r.dur}
                     </span>
 
@@ -797,7 +799,7 @@ function MedicalCodingRoute() {
                         "min-w-[4.25rem] rounded-full border px-5 py-2 text-[0.8rem] font-semibold transition-colors",
                         answers[i] === v
                           ? "border-[var(--blue)] bg-[var(--blue)] text-white"
-                          : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--blue)] hover:text-[var(--blue)]",
+                          : "border-[var(--line)] text-[var(--ink-muted)] hover:border-[var(--blue)] hover:text-[var(--blue-ink)]",
                       )}
                     >
                       {v ? "Yes" : "No"}
@@ -823,7 +825,7 @@ function MedicalCodingRoute() {
                 <button
                   type="button"
                   onClick={() => setAnswers([])}
-                  className="group mt-5 inline-flex items-center gap-2 text-[0.85rem] font-semibold text-[var(--blue)] transition-colors hover:text-[var(--blue-strong)]"
+                  className="group mt-5 inline-flex items-center gap-2 text-[0.85rem] font-semibold text-[var(--blue-ink)] transition-colors hover:text-[var(--blue-ink-hover)]"
                 >
                   Reset
                   <ArrowGlyph className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />

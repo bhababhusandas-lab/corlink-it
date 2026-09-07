@@ -16,10 +16,10 @@ const variants: Record<Variant, string> = {
   primary:
     "rounded-[var(--radius)] bg-[var(--blue)] px-6 py-3 text-white shadow-[var(--shadow-card)] hover:bg-[var(--blue-strong)]",
   secondary:
-    "rounded-[var(--radius)] border border-[color-mix(in_srgb,var(--blue)_40%,transparent)] bg-white px-6 py-3 text-[var(--blue)] hover:border-[var(--blue)] hover:bg-[var(--tint)]",
+    "rounded-[var(--radius)] border border-[color-mix(in_srgb,var(--blue)_40%,transparent)] bg-white px-6 py-3 text-[var(--blue-ink)] hover:border-[var(--blue)] hover:bg-[var(--tint)]",
   onNavy:
     "rounded-[var(--radius)] bg-white px-6 py-3 text-[var(--blue-strong)] hover:bg-[var(--tint)]",
-  link: "text-[var(--blue)] hover:text-[var(--blue-strong)]",
+  link: "text-[var(--blue-ink)] hover:text-[var(--blue-ink-hover)]",
 };
 
 export function CtaLink({
@@ -74,7 +74,7 @@ export function CardLink({ to, label }: { to: string; label: string }) {
   return (
     <Link
       to={to}
-      className="group/link inline-flex items-center gap-2 text-sm font-semibold text-[var(--blue)] transition-colors hover:text-[var(--blue-strong)]"
+      className="group/link inline-flex items-center gap-2 text-sm font-semibold text-[var(--blue-ink)] transition-colors hover:text-[var(--blue-ink-hover)]"
     >
       {label}
       <ArrowGlyph className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />

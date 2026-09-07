@@ -110,7 +110,7 @@ function ServicesPage() {
       <CaseStudyBlock tone="tint" id="case-study" />
 
       {/* Our values */}
-      <Section tone="white">
+      <Section tone="tint">
         <Container>
           <Reveal>
             <p className="eyebrow">Our Values</p>
@@ -137,7 +137,7 @@ function ServicesPage() {
         </Container>
       </Section>
 
-      <FaqAccordion tone="tint" id="faqs" />
+      <FaqAccordion tone="white" id="faqs" />
 
       <FinalCta />
     </SiteLayout>

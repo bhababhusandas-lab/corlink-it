@@ -34,7 +34,16 @@ export function KeyBenefits({ tone = "tint", id }: { tone?: "white" | "tint"; id
  * carrying the headline figure, the challenge/approach/result narrative, and a
  * pull quote on the right.
  */
+/**
+ * Featured case study.
+ *
+ * Hidden while `caseStudy.draft` is set — the figures and narrative are an
+ * outline, not a real engagement, and must not read as one. Clear the flag in
+ * content once a real, approved case study exists.
+ */
 export function CaseStudyBlock({ tone = "white", id }: { tone?: "white" | "tint"; id?: string }) {
+  if (caseStudy.draft) return null;
+
   return (
     <Section tone={tone} {...(id ? { id } : {})}>
       <Container>

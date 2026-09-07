@@ -19,7 +19,7 @@ export function BreadcrumbTrail({ items }: { items: readonly Crumb[] }) {
               {c.to && !last ? (
                 <Link
                   to={c.to}
-                  className="text-[0.78rem] text-[var(--ink-muted)] transition-colors hover:text-[var(--blue)]"
+                  className="text-[0.78rem] text-[var(--ink-muted)] transition-colors hover:text-[var(--blue-ink)]"
                 >
                   {c.label}
                 </Link>

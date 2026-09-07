@@ -187,7 +187,7 @@ function AboutPage() {
                   <h3 className="font-display text-[1.05rem] font-semibold tracking-wide text-[var(--navy)] uppercase">
                     {l.name}
                   </h3>
-                  <p className="mt-1.5 text-[0.8rem] font-semibold tracking-[0.1em] text-[var(--blue)] uppercase">
+                  <p className="mt-1.5 text-[0.8rem] font-semibold tracking-[0.1em] text-[var(--blue-ink)] uppercase">
                     {l.role}
                   </p>
                 </div>
@@ -199,10 +199,10 @@ function AboutPage() {
 
       <TestimonialBlock tone="white" />
 
-      <MedicalTeaser tone="tint" />
+      <MedicalTeaser tone="white" />
 
       {/* Explore */}
-      <Section tone="white">
+      <Section tone="tint">
         <Container>
           <Reveal>
             <h2 className="h-section">{aboutPage.exploreTitle}</h2>

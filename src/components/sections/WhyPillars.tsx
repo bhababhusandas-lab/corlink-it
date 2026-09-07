@@ -27,7 +27,7 @@ export function WhyPillars({ tone = "tint" }: { tone?: "white" | "tint" }) {
 
         <Reveal className="mt-12 flex items-center gap-4">
           <span className="hidden h-px flex-1 bg-[var(--line)] sm:block" />
-          <p className="text-center text-[0.78rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase">
+          <p className="text-center text-[0.78rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase">
             {whyCorlink.banner}
           </p>
           <span className="hidden h-px flex-1 bg-[var(--line)] sm:block" />

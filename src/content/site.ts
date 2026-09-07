@@ -716,6 +716,8 @@ export const howWeWork = {
 };
 
 export const testimonial = {
+  /** While true the block does not render — no invented client is shown. */
+  draft: true,
   eyebrow: "WHAT OUR CLIENTS SAY",
   title: "Trusted by the teams we work with",
   /** REPLACE: use a real, approved client quote and attribution. */
@@ -752,6 +754,8 @@ export const keyBenefits = {
 };
 
 export const caseStudy = {
+  /** While true the block does not render — no invented engagement is shown. */
+  draft: true,
   eyebrow: "FEATURED CASE STUDY",
   title: "Making a real impact",
   /** REPLACE: this is an illustrative outline, not a real engagement. */

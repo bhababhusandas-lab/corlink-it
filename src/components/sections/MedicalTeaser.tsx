@@ -54,7 +54,7 @@ export function MedicalTeaser({ tone = "white" }: { tone?: "white" | "tint" }) {
 
           <Reveal className="min-w-0" delay={140}>
             <div className="section-blue h-full rounded-[var(--radius)] p-6">
-              <p className="text-[0.72rem] font-semibold tracking-[0.14em] text-[var(--blue)] uppercase">
+              <p className="text-[0.72rem] font-semibold tracking-[0.14em] text-[var(--blue-ink)] uppercase">
                 {liveCodes.title}
               </p>
               <ul className="mt-5 space-y-3">

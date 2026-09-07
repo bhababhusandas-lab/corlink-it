@@ -102,7 +102,7 @@ export function SectionHeading({
           {titleAccent ? (
             <>
               {" "}
-              <span className={onNavy ? "text-[var(--on-navy-muted)]" : "text-[var(--blue)]"}>
+              <span className={onNavy ? "text-[var(--on-navy-muted)]" : "text-[var(--blue-ink)]"}>
                 {titleAccent}
               </span>
             </>
@@ -127,7 +127,7 @@ export function SectionHeading({
                 "group mt-4 inline-flex items-center gap-2 text-sm font-semibold transition-colors",
                 onNavy
                   ? "text-[var(--on-navy)] hover:text-[var(--on-navy-muted)]"
-                  : "text-[var(--blue)] hover:text-[var(--blue-strong)]",
+                  : "text-[var(--blue-ink)] hover:text-[var(--blue-ink-hover)]",
               )}
             >
               {link.label}

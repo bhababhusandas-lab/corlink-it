@@ -99,7 +99,7 @@ export function CurrentOpportunities() {
             <div className="mt-auto pt-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 text-sm font-semibold text-[var(--blue)] transition-colors hover:text-[var(--blue-strong)]"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-[var(--blue-ink)] transition-colors hover:text-[var(--blue-ink-hover)]"
               >
                 {opportunitiesPage.noFit.cta}
                 <ArrowGlyph className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />

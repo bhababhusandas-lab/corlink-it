@@ -120,8 +120,17 @@ export function ProcessRail({
   );
 }
 
-/** Client testimonial — oversized quote mark, serif quote, attribution, photo. */
+/**
+ * Client testimonial — oversized quote mark, serif quote, attribution, photo.
+ *
+ * Hidden while `testimonial.draft` is set. The copy is still placeholder text
+ * that names no real client, and shipping "replace with a real quote" to
+ * visitors is worse than showing nothing. Clear the flag in content once an
+ * approved quote exists and the block returns.
+ */
 export function TestimonialBlock({ tone = "tint" }: { tone?: "white" | "tint" }) {
+  if (testimonial.draft) return null;
+
   return (
     <Section tone={tone}>
       <Container>
@@ -169,9 +178,9 @@ export function TestimonialBlock({ tone = "tint" }: { tone?: "white" | "tint" })
 }
 
 /** Insights — three article cards with category, date and serif title. */
-export function InsightCards() {
+export function InsightCards({ tone = "white" }: { tone?: "white" | "tint" }) {
   return (
-    <Section tone="white">
+    <Section tone={tone}>
       <Container>
         <SectionHeading
           eyebrow={insights.eyebrow}
@@ -188,7 +197,7 @@ export function InsightCards() {
               className="card-base card-lift flex min-w-0 flex-col p-6"
             >
               <span className="flex items-center gap-2.5 text-[0.7rem] font-semibold tracking-[0.1em] uppercase">
-                <span className="text-[var(--blue)]">{a.category}</span>
+                <span className="text-[var(--blue-ink)]">{a.category}</span>
                 <span aria-hidden="true" className="text-[var(--line)]">
                   |
                 </span>
